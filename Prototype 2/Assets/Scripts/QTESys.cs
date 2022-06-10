@@ -17,7 +17,7 @@ public class QTESys : MonoBehaviour
 
     void Start()
     {
-        health = GameObject.Find("HealthBar").GetComponent<PlayerHealth>();//GameObject.GetComponent<PlayerHealth>();
+        health = GameObject.Find("HealthBar").GetComponent<PlayerHealth>();
     }
 
     // Update is called once per frame
@@ -51,7 +51,6 @@ public class QTESys : MonoBehaviour
         {
             if(Input.anyKeyDown)
             {
-                Debug.Log("Press");
                 if(Input.GetKeyDown(KeyCode.E))
                 {
                     CorrectKey = 1;
@@ -69,7 +68,6 @@ public class QTESys : MonoBehaviour
         {
             if(Input.anyKeyDown)
             {
-                Debug.Log("Press");
                 if(Input.GetKeyDown(KeyCode.R))
                 {
                     CorrectKey = 1;
@@ -87,7 +85,6 @@ public class QTESys : MonoBehaviour
         {
             if(Input.anyKeyDown)
             {
-                Debug.Log("Press");
                 if(Input.GetKeyDown(KeyCode.T))
                 {
                     CorrectKey = 1;
@@ -109,6 +106,9 @@ public class QTESys : MonoBehaviour
         {
             CountingDown = 2;
             Passbox.GetComponent<TextMeshProUGUI>().text = "PASS";
+
+            ScoreCounter.instance.AddPoint();
+
             yield return new WaitForSeconds(1.5f);
             CorrectKey = 0;
             Passbox.GetComponent<TextMeshProUGUI>().text = "";
