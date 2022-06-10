@@ -13,6 +13,13 @@ public class QTESys : MonoBehaviour
     public int CorrectKey;
     public int CountingDown;
 
+    PlayerHealth health;
+
+    void Start()
+    {
+        health = GameObject.Find("HealthBar").GetComponent<PlayerHealth>();//GameObject.GetComponent<PlayerHealth>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -114,6 +121,9 @@ public class QTESys : MonoBehaviour
         {
             CountingDown = 2;
             Passbox.GetComponent<TextMeshProUGUI>().text = "FAIL";
+
+            health.TakeDamage();
+
             yield return new WaitForSeconds(1.5f);
             CorrectKey = 0;
             Passbox.GetComponent<TextMeshProUGUI>().text = "";
@@ -132,6 +142,9 @@ public class QTESys : MonoBehaviour
             QTEGen = 4;
             CountingDown = 2;
             Passbox.GetComponent<TextMeshProUGUI>().text = "FAIL TOO LONG";
+
+            health.TakeDamage();
+
             yield return new WaitForSeconds(1.5f);
             CorrectKey = 0;
             Passbox.GetComponent<TextMeshProUGUI>().text = "";
