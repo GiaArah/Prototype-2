@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class PlayerPlant : MonoBehaviour
 {
+    // Plant color RGB: 0, 140, 49
     public GameObject plant;
-    public Transform plantDimensions;
-    public Vector3 plantGrow;
-    public Vector3 plantWilt;
+    Transform plantDimensions;
+    /*public Vector3 plantGrow;
+    public Vector3 plantWilt;*/
+
+    SpriteRenderer plantSpriteRenderer;
+    float plantRed;
+    float plantGreen;
+    float plantBlue;
 
     Vector3 plantRisePos;
-
+    
     public GameObject plantPiecePrefab;
     GameObject currentPlantPiece;
 
@@ -21,8 +27,8 @@ public class PlayerPlant : MonoBehaviour
     {
         plant = GameObject.Find("Plant");
         plantDimensions = GameObject.Find("Plant").transform;
-        plantGrow = Vector3.up;
-        plantWilt = Vector3.down;
+        /*plantGrow = Vector3.up;
+        plantWilt = Vector3.down;*/
 
         plantRisePos = plant.transform.position;
 
@@ -57,7 +63,9 @@ public class PlayerPlant : MonoBehaviour
     public void WiltSprite()
     {
         //WIP: Do not use rn. Need a way to keep track of previous plant piece below the one that will be destroyed.
-        Destroy(currentPlantPiece.gameObject);
+        //Destroy(currentPlantPiece.gameObject);
+
+        //Function will now change color of the sprite
     }
 
 }
