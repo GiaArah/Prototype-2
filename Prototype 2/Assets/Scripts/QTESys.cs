@@ -13,11 +13,16 @@ public class QTESys : MonoBehaviour
     public int CorrectKey;
     public int CountingDown;
 
+    
+    ScoreCounter score;
     PlayerHealth health;
+    PlayerPlant plant;
 
     void Start()
     {
+        score = GameObject.Find("Canvas").GetComponent<ScoreCounter>();
         health = GameObject.Find("HealthBar").GetComponent<PlayerHealth>();
+        plant = GameObject.Find("Plant").GetComponent<PlayerPlant>();
     }
 
     // Update is called once per frame
@@ -108,6 +113,7 @@ public class QTESys : MonoBehaviour
             Passbox.GetComponent<TextMeshProUGUI>().text = "PASS";
 
             ScoreCounter.instance.AddPoint();
+            plant.GrowSprite();
 
             yield return new WaitForSeconds(1.5f);
             CorrectKey = 0;

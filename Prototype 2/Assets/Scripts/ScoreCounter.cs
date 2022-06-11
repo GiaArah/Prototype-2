@@ -8,7 +8,6 @@ public class ScoreCounter : MonoBehaviour
 {
     public static ScoreCounter instance;
 
-
     public TextMeshProUGUI scoreText; 
     public TextMeshProUGUI highscoreText;
 

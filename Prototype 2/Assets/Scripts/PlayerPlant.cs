@@ -36,7 +36,7 @@ public class PlayerPlant : MonoBehaviour
     {
         //Line for testing
         //GrowOrWilt(0.5f, plantGrow);
-        GrowSprite();
+        //GrowSprite();
     }
 
     //Vector3 direction should be positive for growth, negative for wilt
