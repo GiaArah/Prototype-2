@@ -12,6 +12,9 @@ public class PlayerPlant : MonoBehaviour
     Vector3 plantRisePos;
 
     public GameObject plantPiecePrefab;
+    GameObject currentPlantPiece;
+
+    PlayerHealth playerHealth;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +25,10 @@ public class PlayerPlant : MonoBehaviour
         plantWilt = Vector3.down;
 
         plantRisePos = plant.transform.position;
+
+        currentPlantPiece = plant;
+        
+        playerHealth = GameObject.Find("HealthBar").GetComponent<PlayerHealth>();
     }
 
     // Update is called once per frame
@@ -43,7 +50,14 @@ public class PlayerPlant : MonoBehaviour
     {
         GameObject plantPiece = (GameObject)Instantiate(plantPiecePrefab, plantRisePos + new Vector3(0.0f, 6.0f, 0.0f), Quaternion.identity);
 
+        currentPlantPiece = plantPiece;
         plantRisePos = plantPiece.transform.position;
+    }
+
+    public void WiltSprite()
+    {
+        //WIP: Do not use rn. Need a way to keep track of previous plant piece below the one that will be destroyed.
+        Destroy(currentPlantPiece.gameObject);
     }
 
 }
