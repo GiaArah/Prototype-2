@@ -12,16 +12,20 @@ public class BeatScroller : MonoBehaviour
     public GameObject[] notes;
     public int[] notePosition;
 
+    //public GameObject tempTest;
+
     private List<GameObject> allNotes = new List<GameObject>();
 
-    public int waitTime;
+    public float timer;
+    public float maxTimer;
 
     // Start is called before the first frame update
     void Start()
     {
+        timer = 0;
+        maxTimer = Random.Range(5f,12f);
+
         beatTempo = beatTempo / 60f;
-        waitTime = 3;
-        //Instantiate(notes[UnityEngine.Random.Range(0,notes.Length)], new Vector3(notePosition[UnityEngine.Random.Range(0,notePosition.Length)], 0, 0), Quaternion.identity);
     }
 
     // Update is called once per frame
@@ -29,27 +33,32 @@ public class BeatScroller : MonoBehaviour
     {
         if(hasStarted)
         {
-            // transform.position -= new Vector3(0f, beatTempo * Time.deltaTime, 0f);
-            GenerateNotes();
-            ScrollNotes();
+            StartCoroutine("SpawnNoteTimer");
         }
     }
 
-    public void GenerateNotes()
+    public void SpawnNote()
     {
-        GameObject newNote = Instantiate(notes[UnityEngine.Random.Range(0,notes.Length)], new Vector3(notePosition[UnityEngine.Random.Range(0,notePosition.Length)], 6, 0), Quaternion.identity);
-        allNotes.Add(newNote);
+        float y = 6.0f;
+        Vector3 spawnPoint = new Vector3(notePosition[UnityEngine.Random.Range(0,notePosition.Length)], y, 0);
+        spawnPoint.z = 0;
+        GameObject newNote = GameObject.Instantiate(notes[UnityEngine.Random.Range(0,notes.Length - 1)], spawnPoint, new Quaternion(0,0,0,0));
+        //GameObject newNote = GameObject.Instantiate(tempTest, spawnPoint, new Quaternion(0,0,0,0));
+
     }
 
-    public void ScrollNotes()
+    IEnumerator SpawnNoteTimer()
     {
-        foreach(GameObject thisNote in allNotes)
+        if(timer >= maxTimer)
         {
-            if(thisNote != null)
-            {
-                thisNote.transform.position -= new Vector3(0f, beatTempo * Time.deltaTime, 0f);
-            }
+            SpawnNote();
+            timer = 0;
+            maxTimer = Random.Range(5f,12f);
         }
+
+        timer += 1f * Time.deltaTime;
+        yield return new WaitForSecondsRealtime(0.1f);
+
     }
 
 }

@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     public int multiplierTracker;
     public int[] multiplierThresholds;
 
+    public PlayerHealth health;
+    public PlayerPlant plant;
 
     // Start is called before the first frame update
     void Start()
@@ -68,6 +70,8 @@ public class GameManager : MonoBehaviour
 
         currentScore += scorePerNote * currentMultiplier;
         scoreText.text = "Score: " + currentScore;
+
+        //plant.GrowSprite();
     }
 
     public void NoteMissed()
@@ -77,5 +81,7 @@ public class GameManager : MonoBehaviour
         currentMultiplier = 1;
         multiplierTracker = 0;
         multiText.text = "Multiplier: x" + currentMultiplier;
+
+        health.TakeDamage();
     }
 }

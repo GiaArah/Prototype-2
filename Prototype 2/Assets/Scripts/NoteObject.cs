@@ -14,7 +14,18 @@ public class NoteObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(transform.position.x == -8)
+        {
+            keyToPress = KeyCode.E;
+        }
+        else if(transform.position.x == 0)
+        {
+            keyToPress = KeyCode.R;
+        }
+        else if(transform.position.x == 8)
+        {
+            keyToPress = KeyCode.T;
+        }
     }
 
     // Update is called once per frame
@@ -28,7 +39,8 @@ public class NoteObject : MonoBehaviour
 
                 obtained = true;
 
-                gameObject.SetActive(false);
+                //gameObject.SetActive(false);
+                Destroy(this.gameObject);
             }
         }
     }
