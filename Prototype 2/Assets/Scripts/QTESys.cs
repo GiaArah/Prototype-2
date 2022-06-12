@@ -17,12 +17,14 @@ public class QTESys : MonoBehaviour
     ScoreCounter score;
     PlayerHealth health;
     PlayerPlant plant;
+    PlantColorChanger plantColorChanger;
 
     void Start()
     {
         score = GameObject.Find("Canvas").GetComponent<ScoreCounter>();
         health = GameObject.Find("HealthBar").GetComponent<PlayerHealth>();
         plant = GameObject.Find("Plant").GetComponent<PlayerPlant>();
+        plantColorChanger = GameObject.Find("PlantColorChanger").GetComponent<PlantColorChanger>();
     }
 
     // Update is called once per frame
@@ -129,6 +131,7 @@ public class QTESys : MonoBehaviour
             Passbox.GetComponent<TextMeshProUGUI>().text = "FAIL";
 
             health.TakeDamage();
+            plantColorChanger.ChangePlantColor();
 
             yield return new WaitForSeconds(1.5f);
             CorrectKey = 0;

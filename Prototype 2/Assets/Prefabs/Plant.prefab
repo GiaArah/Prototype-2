@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5534725523545983601}
   m_Layer: 0
   m_Name: Plant
-  m_TagString: Untagged
+  m_TagString: Plant Fragment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,9 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plant: {fileID: 0}
-  plantDimensions: {fileID: 0}
-  plantGrow: {x: 0, y: 0, z: 0}
-  plantWilt: {x: 0, y: 0, z: 0}
   plantPiecePrefab: {fileID: 0}
 --- !u!61 &5534725523545983601
 BoxCollider2D:
