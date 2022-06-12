@@ -11,6 +11,17 @@ public class NoteObject : MonoBehaviour
 
     private bool obtained = false;
 
+    public float speed;
+    private Rigidbody2D rb;
+
+    //WORKING ON
+    //public int timeElapsed;
+    public int[] difficultyThresholds;
+    public float difficultyIndex;
+    public int currentDifficulty;
+
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +37,13 @@ public class NoteObject : MonoBehaviour
         {
             keyToPress = KeyCode.T;
         }
+
+        rb = GetComponent<Rigidbody2D>();
+        rb.velocity = new Vector2(0,speed);
+
+        difficultyIndex = 1;
     }
+
 
     // Update is called once per frame
     void Update()
@@ -43,6 +60,11 @@ public class NoteObject : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+        if(transform.position.y < -6)
+        {
+            Destroy(this.gameObject);
+        }
+        Difficulty();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -64,5 +86,35 @@ public class NoteObject : MonoBehaviour
             }
             
         }
+    }
+
+
+    public void Difficulty()
+    {
+        if(GameManager.instance.currentScore >= GameManager.instance.difficultyThreshold)
+        {
+            GameManager.instance.difficultyThreshold += GameManager.instance.difficultyThreshold;
+            
+            //increase the speed of all spawns, increase rate of spiders
+            speed -= 0.25f;
+            rb.velocity = new Vector2(0,speed);
+
+        }
+
+        // if(difficultyIndex - 1 > difficultyThresholds.Length)
+        // {
+        //     //difficultyIndex = 0;
+        //     return;
+        // }
+        // else if(difficultyIndex - 1 < difficultyThresholds.Length)
+        // {
+        //     if(difficultyThresholds[difficultyIndex - 1] <= GameManager.instance.currentScore)
+        //     {
+        //         difficultyIndex++;
+        //         currentDifficulty++;
+
+
+        //     }
+        // }
     }
 } 

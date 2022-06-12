@@ -2,15 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NoteController : MonoBehaviour
+public class BadNoteController : MonoBehaviour
 {
-
-
     // Start is called before the first frame update
     void Start()
     {
-
-
         
     }
 
@@ -18,9 +14,5 @@ public class NoteController : MonoBehaviour
     void Update()
     {
         
-
     }
-
-
-
 }

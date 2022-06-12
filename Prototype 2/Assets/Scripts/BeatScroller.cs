@@ -12,20 +12,23 @@ public class BeatScroller : MonoBehaviour
     public GameObject[] notes;
     public int[] notePosition;
 
-    //public GameObject tempTest;
-
-    private List<GameObject> allNotes = new List<GameObject>();
-
     public float timer;
     public float maxTimer;
+
+    //public NoteController noteCont;
+    //public int[] spawnTimer;
+
+    public static NoteObject note;
+
 
     // Start is called before the first frame update
     void Start()
     {
         timer = 0;
-        maxTimer = Random.Range(5f,12f);
+        maxTimer = 5;
 
         beatTempo = beatTempo / 60f;
+
     }
 
     // Update is called once per frame
@@ -43,8 +46,6 @@ public class BeatScroller : MonoBehaviour
         Vector3 spawnPoint = new Vector3(notePosition[UnityEngine.Random.Range(0,notePosition.Length)], y, 0);
         spawnPoint.z = 0;
         GameObject newNote = GameObject.Instantiate(notes[UnityEngine.Random.Range(0,notes.Length - 1)], spawnPoint, new Quaternion(0,0,0,0));
-        //GameObject newNote = GameObject.Instantiate(tempTest, spawnPoint, new Quaternion(0,0,0,0));
-
     }
 
     IEnumerator SpawnNoteTimer()
@@ -53,12 +54,18 @@ public class BeatScroller : MonoBehaviour
         {
             SpawnNote();
             timer = 0;
-            maxTimer = Random.Range(5f,12f);
+
+            if(GameManager.instance.currentScore >= GameManager.instance.difficultyThreshold && (maxTimer - 1 != 0.0f))
+            {
+                maxTimer--; /*= Random.Range(3f,4f);*/
+            } 
         }
 
         timer += 1f * Time.deltaTime;
         yield return new WaitForSecondsRealtime(0.1f);
 
     }
+
+
 
 }

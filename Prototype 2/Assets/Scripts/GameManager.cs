@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour
     public PlayerHealth health;
     public PlayerPlant plant;
 
+    public int difficultyThreshold;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +37,7 @@ public class GameManager : MonoBehaviour
         scoreText.text = "Score: 0";
         multiText.text = "Multiplier: x1";
         currentMultiplier = 1;
+        difficultyThreshold = 200;
     }
 
     // Update is called once per frame
@@ -47,6 +51,7 @@ public class GameManager : MonoBehaviour
                 theBS.hasStarted = true;
 
                 theMusic.Play(); 
+
             }
         }
     }
@@ -84,4 +89,5 @@ public class GameManager : MonoBehaviour
 
         health.TakeDamage();
     }
+
 }

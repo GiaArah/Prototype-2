@@ -994,12 +994,10 @@ MonoBehaviour:
   beatTempo: 120
   hasStarted: 0
   notes:
-  - {fileID: 8490798984799595242, guid: 253a412e022a9405a9cbe6d5a9a77ca5, type: 3}
   - {fileID: 8118130669081024127, guid: 1cf1b1ef9e02e4f7ca0d0b29ebd652c9, type: 3}
   - {fileID: 3180793673378744477, guid: 619b64f69fc0d408882b15058e023897, type: 3}
   - {fileID: 6837906084795170480, guid: b7a47e7d0c2674f7ca1c33b9444e8975, type: 3}
   notePosition: f8ffffff0000000008000000
-  tempTest: {fileID: 3180793673378744477, guid: 619b64f69fc0d408882b15058e023897, type: 3}
   timer: 0
   maxTimer: 0
 --- !u!4 &1173591568
@@ -1378,6 +1376,9 @@ MonoBehaviour:
   multiplierThresholds: 040000000800000010000000
   health: {fileID: 794662300}
   plant: {fileID: 44953480}
+  difficultyThresholds: c8000000bc020000e8030000dc050000
+  difficultyIndex: 0
+  currentDifficulty: 0
 --- !u!1 &2102276396
 GameObject:
   m_ObjectHideFlags: 0
