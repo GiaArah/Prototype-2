@@ -39,7 +39,7 @@ public class NoteObject : MonoBehaviour
         }
 
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(0,speed);
+        rb.velocity = new Vector3(0,speed,0);
 
         difficultyIndex = 1;
     }
@@ -97,8 +97,7 @@ public class NoteObject : MonoBehaviour
             
             //increase the speed of all spawns, increase rate of spiders
             speed -= 0.25f;
-            rb.velocity = new Vector2(0,speed);
-
+            rb.velocity = new Vector3(0,speed,0);
         }
 
         // if(difficultyIndex - 1 > difficultyThresholds.Length)

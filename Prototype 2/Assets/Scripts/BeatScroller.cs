@@ -55,7 +55,7 @@ public class BeatScroller : MonoBehaviour
             SpawnNote();
             timer = 0;
 
-            if(GameManager.instance.currentScore >= GameManager.instance.difficultyThreshold && (maxTimer - 1 != 0.0f))
+            if(GameManager.instance.currentScore >= GameManager.instance.difficultyThreshold && (maxTimer - 1 != 0))
             {
                 maxTimer--; /*= Random.Range(3f,4f);*/
             } 
