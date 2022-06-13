@@ -66,10 +66,12 @@ public class NoteObject : MonoBehaviour
                 GameManager.instance.NoteMissed();
             }
         }
-        if(transform.position.y < -6)
+
+        if (transform.position.y < -6)
         {
             Destroy(this.gameObject);
         }
+
         Difficulty();
     }
 
