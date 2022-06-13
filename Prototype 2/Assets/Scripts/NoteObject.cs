@@ -94,7 +94,7 @@ public class NoteObject : MonoBehaviour
             GameManager.instance.difficultyThreshold += GameManager.instance.difficultyThreshold;
             
             //increase the speed of all spawns, increase rate of spiders
-            speed -= 0.25f;
+            speed *= 1.5f;
             rb.velocity = new Vector3(0,speed,0);
         }
 

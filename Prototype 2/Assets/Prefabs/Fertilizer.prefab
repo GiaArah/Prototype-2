@@ -102,10 +102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBePressed: 0
   keyToPress: 0
-  speed: -0.25
-  difficultyThresholds: c8000000900100005802000020030000
+  speed: -1
   difficultyIndex: 0
-  currentDifficulty: 0
 --- !u!61 &8118130669081024125
 BoxCollider2D:
   m_ObjectHideFlags: 0

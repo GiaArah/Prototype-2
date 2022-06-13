@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
         multiText.text = "Multiplier: x1";
         currentMultiplier = 1;
         difficultyThreshold = 200;
+        plant = GameObject.Find("Plant").GetComponent<PlayerPlant>();
     }
 
     // Update is called once per frame
@@ -76,7 +77,7 @@ public class GameManager : MonoBehaviour
         currentScore += scorePerNote * currentMultiplier;
         scoreText.text = "Score: " + currentScore;
 
-        //plant.GrowSprite();
+        plant.GrowSprite();
     }
 
     public void NoteMissed()

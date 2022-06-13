@@ -54,7 +54,7 @@ public class PlayerPlant : MonoBehaviour
 
     public void GrowSprite()
     {
-        GameObject plantPiece = (GameObject)Instantiate(plantPiecePrefab, plantRisePos + new Vector3(0.0f, 6.0f, 0.0f), Quaternion.identity);
+        GameObject plantPiece = (GameObject)Instantiate(plantPiecePrefab, plantRisePos + new Vector3(0.0f, 1.0f, 0.0f), Quaternion.identity);
 
         currentPlantPiece = plantPiece;
         plantRisePos = plantPiece.transform.position;

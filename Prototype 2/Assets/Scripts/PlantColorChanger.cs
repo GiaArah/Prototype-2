@@ -26,6 +26,7 @@ public class PlantColorChanger : MonoBehaviour
 
         foreach(GameObject plantPiece in plantPieces)
         {
+            float plantRed = plantPiece.GetComponent<SpriteRenderer>().color.r;
             plantPiece.GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f);
         }
     }
