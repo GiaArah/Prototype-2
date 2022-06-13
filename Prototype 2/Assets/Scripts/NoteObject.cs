@@ -14,12 +14,10 @@ public class NoteObject : MonoBehaviour
     public float speed;
     private Rigidbody2D rb;
 
-    //WORKING ON
     //public int timeElapsed;
-    public int[] difficultyThresholds;
+    //public int[] difficultyThresholds;
+    //public int currentDifficulty;
     public float difficultyIndex;
-    public int currentDifficulty;
-
     
 
     // Start is called before the first frame update
@@ -88,7 +86,7 @@ public class NoteObject : MonoBehaviour
         }
     }
 
-
+    //increases difficulty (note speed) based on the score
     public void Difficulty()
     {
         if(GameManager.instance.currentScore >= GameManager.instance.difficultyThreshold)

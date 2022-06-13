@@ -57,15 +57,11 @@ public class BeatScroller : MonoBehaviour
 
             if(GameManager.instance.currentScore >= GameManager.instance.difficultyThreshold && (maxTimer - 1 != 0))
             {
-                maxTimer--; /*= Random.Range(3f,4f);*/
+                maxTimer -= 1; /* = Random.Range(3f,4f); */
             } 
         }
-
         timer += 1f * Time.deltaTime;
         yield return new WaitForSecondsRealtime(0.1f);
 
     }
-
-
-
 }

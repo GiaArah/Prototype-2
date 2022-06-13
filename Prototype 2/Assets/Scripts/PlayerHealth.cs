@@ -25,7 +25,7 @@ public class PlayerHealth : MonoBehaviour
         
     }
 
-    public void TakeDamage(/*float damageAmount*/)
+    public void TakeDamage()
     {
         health -= damageAmount;
         healthBar.fillAmount = (health / startHealth);
