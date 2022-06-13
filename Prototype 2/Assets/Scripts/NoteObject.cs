@@ -36,6 +36,8 @@ public class NoteObject : MonoBehaviour
             keyToPress = KeyCode.T;
         }
 
+        canBePressed = false;
+
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector3(0,speed,0);
 
@@ -59,6 +61,10 @@ public class NoteObject : MonoBehaviour
                 //gameObject.SetActive(false);
                 Destroy(this.gameObject);
             }
+            else
+            {
+                GameManager.instance.NoteMissed();
+            }
         }
         if(transform.position.y < -6)
         {
@@ -67,6 +73,7 @@ public class NoteObject : MonoBehaviour
         Difficulty();
     }
 
+    // Hits note successfully
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Activator")
@@ -75,6 +82,7 @@ public class NoteObject : MonoBehaviour
         }
     }
 
+    // Note exists but is missed
     private void OnTriggerExit2D(Collider2D other)
     {
         if(other.tag == "Activator")
@@ -87,6 +95,7 @@ public class NoteObject : MonoBehaviour
             
         }
     }
+
 
     //increases difficulty (note speed) based on the score
     public void Difficulty()
