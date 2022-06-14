@@ -4,24 +4,14 @@ using UnityEngine;
 
 public class NoteObject : MonoBehaviour
 {
-
     public bool canBePressed;
 
     public KeyCode keyToPress;
 
     private bool obtained = false;
 
-    public float speed;
     private Rigidbody2D rb;
 
-    //public int timeElapsed;
-    //public int[] difficultyThresholds;
-    //public int currentDifficulty;
-    //public float difficultyIndex;
-
-    public int currScore;
-    public int currDiff;
-    
 
     // Start is called before the first frame update
     void Start()
@@ -41,15 +31,8 @@ public class NoteObject : MonoBehaviour
 
         canBePressed = false;
 
-        speed = -3f;
-
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector3(0f,speed,0f);
-
-        //difficultyIndex = 1;
-
-        currScore = 0;
-        currDiff = 0;
+        rb.velocity = new Vector3(0f,GameManager.instance.speed,0f);
     }
 
 
@@ -72,17 +55,12 @@ public class NoteObject : MonoBehaviour
 
                 GameManager.instance.NoteMissed();
             }
-            GetComponent<Rigidbody2D>().velocity = new Vector3(0f, speed, 0f);
         }
 
         if (transform.position.y < -6)
         {
             Destroy(this.gameObject);
         }
-
-        currScore = GameManager.instance.currentScore;
-        currDiff = GameManager.instance.difficultyThreshold;
-        Difficulty();
     }
 
     // Hits note successfully
@@ -108,20 +86,4 @@ public class NoteObject : MonoBehaviour
         }
     }
 
-
-    //increases difficulty (note speed) based on the score
-    public void Difficulty()
-    {
-        if(GameManager.instance.currentScore >= GameManager.instance.difficultyThreshold)
-        {
-            GameManager.instance.difficultyThreshold += GameManager.instance.difficultyThreshold;
-            Debug.Log("INCREASE SPEED");
-            //increase the speed of all notes
-            speed -= 3f;
-            rb.velocity = new Vector3(0f,speed,0f);
-            //GetComponent<Rigidbody2D>().velocity = new Vector3(0,speed,0);
-            Debug.Log("Speed is " + speed);
-        }
-        
-    }
 } 
