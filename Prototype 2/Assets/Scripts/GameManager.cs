@@ -10,8 +10,6 @@ public class GameManager : MonoBehaviour
 
     public bool startPlaying;
 
-    //public BeatScroller theBS;
-
     public static GameManager instance;
 
     public int currentScore;
@@ -67,10 +65,12 @@ public class GameManager : MonoBehaviour
         {
             if(Input.anyKeyDown)
             {
+                Destroy(GameObject.Find("Title"));
                 startPlaying = true;
                 // hasStarted = true;
 
-                theMusic.Play(); 
+                theMusic.Play();
+                 
 
             }
         }
@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
         if(startPlaying)
         {
             StartCoroutine("SpawnNoteTimer");
+            Difficulty();
         }
         //********
     }
@@ -137,16 +138,28 @@ public class GameManager : MonoBehaviour
         float y = 6.0f;
         Vector3 spawnPoint = new Vector3(notePosition[UnityEngine.Random.Range(0,notePosition.Length)], y, 0);
         spawnPoint.z = 0;
-        GameObject newNote = GameObject.Instantiate(notes[UnityEngine.Random.Range(0,notes.Length - 1)], spawnPoint, new Quaternion(0,0,0,0));
+        GameObject newNote = GameObject.Instantiate(notes[UnityEngine.Random.Range(0,notes.Length)], spawnPoint, new Quaternion(0,0,0,0));
     }
 
     //FROM BEATSCROLLER
     IEnumerator SpawnNoteTimer()
     {
-        if(currentScore >= difficultyThreshold && (maxTimer - 1 != 0))
+        if(currentScore >= difficultyThreshold)
         {
             Debug.Log("DECREASE TIMER");
-            maxTimer -= 1; /* = Random.Range(3f,4f); */
+
+            if(!(maxTimer - 1 <= 0))
+            {
+                maxTimer -= 1; /* = Random.Range(3f,4f); */
+            }
+            else if(maxTimer - 1 == 0 && !(maxTimer - 0.1f <= 0))
+            {
+                maxTimer -= 0.1f;
+            }
+            else
+            {
+                
+            }
             Debug.Log("TIMER IS: " + maxTimer);
         } 
 

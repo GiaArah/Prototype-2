@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Activator
   - Plant Fragment
+  - Bad Note
   layers:
   - Default
   - TransparentFX

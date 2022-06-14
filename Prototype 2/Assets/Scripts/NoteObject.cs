@@ -43,18 +43,25 @@ public class NoteObject : MonoBehaviour
         {
             if(canBePressed)
             {
-                GameManager.instance.NoteHit();
+                if(gameObject.tag == "Bad Note")
+                {
+                    GameManager.instance.NoteMissed();
+                }
+                else
+                {
+                    GameManager.instance.NoteHit();
+                }
 
                 obtained = true;
 
                 //gameObject.SetActive(false);
                 Destroy(this.gameObject);
             }
-            else
-            {
+            //else
+            //{
 
-                GameManager.instance.NoteMissed();
-            }
+                //GameManager.instance.NoteMissed();
+            //}
         }
 
         if (transform.position.y < -6)
@@ -78,7 +85,7 @@ public class NoteObject : MonoBehaviour
         if(other.tag == "Activator")
         {
             canBePressed = false;
-            if(!obtained)
+            if(!obtained && !(gameObject.tag == "Bad Note"))
             {
                 GameManager.instance.NoteMissed();
             }

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -2348839072777278244}
   m_Layer: 0
   m_Name: BadBug
-  m_TagString: Untagged
+  m_TagString: Bad Note
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,8 +102,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBePressed: 0
   keyToPress: 0
-  speed: 0
-  difficultyIndex: 0
 --- !u!61 &8490798984799595243
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -22,6 +22,9 @@ public class PlayerPlant : MonoBehaviour
 
     PlayerHealth playerHealth;
 
+    //for camera
+    //public Transform target;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,11 +41,15 @@ public class PlayerPlant : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //Line for testing
         //GrowOrWilt(0.5f, plantGrow);
         //GrowSprite();
+
+        //for camera
+        // Vector3 targetPos = new Vector3(target.position.x, target.position.y, transform.position.z);
+        // transform.position = targetPos;
     }
 
     //Vector3 direction should be positive for growth, negative for wilt
