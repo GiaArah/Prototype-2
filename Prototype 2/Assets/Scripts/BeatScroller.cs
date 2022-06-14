@@ -20,6 +20,9 @@ public class BeatScroller : MonoBehaviour
 
     public static NoteObject note;
 
+    public int currScore;
+    public int currDiff;
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +32,9 @@ public class BeatScroller : MonoBehaviour
 
         beatTempo = beatTempo / 60f;
 
+        currScore = 0;
+        currDiff = 0;
+
     }
 
     // Update is called once per frame
@@ -36,8 +42,12 @@ public class BeatScroller : MonoBehaviour
     {
         if(hasStarted)
         {
+            currScore = GameManager.instance.currentScore;
+            currDiff = GameManager.instance.difficultyThreshold;
             StartCoroutine("SpawnNoteTimer");
         }
+
+
     }
 
     public void SpawnNote()
@@ -46,20 +56,23 @@ public class BeatScroller : MonoBehaviour
         Vector3 spawnPoint = new Vector3(notePosition[UnityEngine.Random.Range(0,notePosition.Length)], y, 0);
         spawnPoint.z = 0;
         GameObject newNote = GameObject.Instantiate(notes[UnityEngine.Random.Range(0,notes.Length - 1)], spawnPoint, new Quaternion(0,0,0,0));
+        //newNote.GetComponent<Rigidbody2D>().velocity = ;
     }
 
     IEnumerator SpawnNoteTimer()
     {
+        if(currScore >= currDiff && (maxTimer - 1 != 0))
+        {
+            Debug.Log("DECREASE TIMER");
+            maxTimer -= 1; /* = Random.Range(3f,4f); */
+        } 
+
         if(timer >= maxTimer)
         {
             SpawnNote();
             timer = 0;
-
-            if(GameManager.instance.currentScore >= GameManager.instance.difficultyThreshold && (maxTimer - 1 != 0))
-            {
-                maxTimer -= 1; /* = Random.Range(3f,4f); */
-            } 
         }
+
         timer += 1f * Time.deltaTime;
         yield return new WaitForSecondsRealtime(0.1f);
 

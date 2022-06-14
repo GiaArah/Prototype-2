@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public int difficultyThreshold;
 
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,7 +60,7 @@ public class GameManager : MonoBehaviour
 
     public void NoteHit()
     {
-        Debug.Log("Hit on Time");
+        //Debug.Log("Hit on Time");
 
         if(currentMultiplier - 1 < multiplierThresholds.Length)
         {
@@ -82,7 +83,7 @@ public class GameManager : MonoBehaviour
 
     public void NoteMissed()
     {
-        Debug.Log("Missed Note");
+       //Debug.Log("Missed Note");
 
         currentMultiplier = 1;
         multiplierTracker = 0;

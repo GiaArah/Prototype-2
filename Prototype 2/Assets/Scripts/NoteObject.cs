@@ -17,7 +17,10 @@ public class NoteObject : MonoBehaviour
     //public int timeElapsed;
     //public int[] difficultyThresholds;
     //public int currentDifficulty;
-    public float difficultyIndex;
+    //public float difficultyIndex;
+
+    public int currScore;
+    public int currDiff;
     
 
     // Start is called before the first frame update
@@ -38,12 +41,15 @@ public class NoteObject : MonoBehaviour
 
         canBePressed = false;
 
+        speed = -3f;
+
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector3(0,speed,0);
+        rb.velocity = new Vector3(0f,speed,0f);
 
-        speed = 1.0f;
+        //difficultyIndex = 1;
 
-        difficultyIndex = 1;
+        currScore = 0;
+        currDiff = 0;
     }
 
 
@@ -63,8 +69,10 @@ public class NoteObject : MonoBehaviour
             }
             else
             {
+
                 GameManager.instance.NoteMissed();
             }
+            GetComponent<Rigidbody2D>().velocity = new Vector3(0f, speed, 0f);
         }
 
         if (transform.position.y < -6)
@@ -72,6 +80,8 @@ public class NoteObject : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+        currScore = GameManager.instance.currentScore;
+        currDiff = GameManager.instance.difficultyThreshold;
         Difficulty();
     }
 
@@ -105,27 +115,13 @@ public class NoteObject : MonoBehaviour
         if(GameManager.instance.currentScore >= GameManager.instance.difficultyThreshold)
         {
             GameManager.instance.difficultyThreshold += GameManager.instance.difficultyThreshold;
-            
-            //increase the speed of all spawns, increase rate of spiders
-            speed *= 1.5f;
-            rb.velocity = new Vector3(0,speed,0);
+            Debug.Log("INCREASE SPEED");
+            //increase the speed of all notes
+            speed -= 3f;
+            rb.velocity = new Vector3(0f,speed,0f);
+            //GetComponent<Rigidbody2D>().velocity = new Vector3(0,speed,0);
             Debug.Log("Speed is " + speed);
         }
-
-        // if(difficultyIndex - 1 > difficultyThresholds.Length)
-        // {
-        //     //difficultyIndex = 0;
-        //     return;
-        // }
-        // else if(difficultyIndex - 1 < difficultyThresholds.Length)
-        // {
-        //     if(difficultyThresholds[difficultyIndex - 1] <= GameManager.instance.currentScore)
-        //     {
-        //         difficultyIndex++;
-        //         currentDifficulty++;
-
-
-        //     }
-        // }
+        
     }
 } 
